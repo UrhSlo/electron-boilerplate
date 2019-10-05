@@ -26,7 +26,7 @@ This is a repo for building new electron apps.....
 ## Authors
 
 ```JS
-const AUTHOR = [
+const AUTHORS = [
   "Janez Sedeljsak", //https://github.com/JanezSedeljsak
   "Brina Jehart" //https://github.com/BrinaJEHART
 ];
