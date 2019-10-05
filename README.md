@@ -4,7 +4,7 @@
 
 This is a repo for building new electron apps.....
 
-![alt text](https://github.com/JanezSedeljsak/owl-messenger/blob/master/site.png)
+![alt text](https://github.com/JanezSedeljsak/electron-boilerplate/blob/master/desc_img.png)
 
 ## Getting Started
 
