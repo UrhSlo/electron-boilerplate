@@ -1,0 +1,26 @@
+{
+  "name": "electron-boilerplate",
+  "version": "1.0.0",
+  "description": "Simple boilerplate app to learn electron",
+  "main": "./app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JanezSedeljsak/electron-boilerplate.git"
+  },
+  "author": "Janez Sedeljsak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JanezSedeljsak/electron-boilerplate/issues"
+  },
+  "homepage": "https://github.com/JanezSedeljsak/electron-boilerplate#readme",
+  "devDependencies": {
+    "electron": "^6.0.11"
+  },
+  "dependencies": {
+    "electron-debug": "^3.0.1"
+  }
+}
