@@ -21,6 +21,8 @@
     "electron": "^6.0.11"
   },
   "dependencies": {
-    "electron-debug": "^3.0.1"
+    "electron-debug": "^3.0.1",
+    "moment": "^2.24.0",
+    "newsapi": "^2.4.0"
   }
 }
