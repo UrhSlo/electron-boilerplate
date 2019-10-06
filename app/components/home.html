@@ -33,7 +33,10 @@
       </div>
 
       <div v-else-if="typeof singleView != 'number'">
-        <div style="width: 98%" class="ui pointing menu">
+        <div
+          style="background: #ffffff99; box-shadow: 0 0 10px #555; width: 98%"
+          class="ui pointing menu"
+        >
           <a class="item">
             <h2 class="ui header">
               <i class="braille icon"></i>
@@ -47,7 +50,7 @@
             <div class="item">
               <button
                 v-on:click="reload()"
-                class="ui right labeled icon button"
+                class="ui right labeled icon teal button"
               >
                 <i class="retweet icon"></i>
                 Reload
