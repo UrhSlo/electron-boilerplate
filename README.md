@@ -1,6 +1,6 @@
 <img src="https://github.com/matiassingers/awesome-readme/blob/master/icon.png" align="right" />
 
-# Electron-Boilerplate
+# Electron-Boilerplate (news app)
 
 This is a repo for building new electron apps.....
 
@@ -18,6 +18,8 @@ This is a repo for building new electron apps.....
 
 ## Built With
 * [ElectronJS](https://electronjs.org)
+* [Vue](https://vuejs.org)
+* [SemanticUI](https://semantic-ui.com)
 
 ## License
 
