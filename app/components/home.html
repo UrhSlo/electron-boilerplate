@@ -3,10 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>News App</title>
-    <script
-      src="https://code.jquery.com/jquery-3.1.1.min.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
@@ -14,38 +11,68 @@
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <link rel="stylesheet" href="css/home.css" />
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
-    <script src="semantic/dist/semantic.min.js"></script>
     <script src="js/home.js"></script>
   </head>
 
   <body>
     <div id="mainDiv" style="padding: 2vw">
-      <div v-if="singleView">{{ singleView }}</div>
-      <div v-else>
-        <div class="row">
-          <h2 class="white-force ui header">
-            <i class="braille icon"></i>
-            <div class="content">
-              News
-              <div class="sub header">What is going on round the globe</div>
+      <div style="height: 90vh" v-if="loading" class="ui">
+        <div class="ui active dimmer">
+          <div class="ui massive text loader">Loading</div>
+        </div>
+      </div>
+      <div style="overflow: hidden;" v-else-if="singleView != null">
+        <button v-on:click="back()" class="ui red left labeled icon button">
+          <i class="left arrow icon"></i>
+          Back
+        </button>
+        <iframe
+          style="width: 95vw; height: 88vh"
+          v-bind:src="news.articles[singleView].url"
+        ></iframe>
+      </div>
+
+      <div v-else-if="typeof singleView != 'number'">
+        <div style="width: 98%" class="ui pointing menu">
+          <a class="item">
+            <h2 class="ui header">
+              <i class="braille icon"></i>
+              <div class="content">
+                News
+                <div class="sub header">What is going on round the globe</div>
+              </div>
+            </h2>
+          </a>
+          <div class="right menu">
+            <div class="item">
+              <button
+                v-on:click="reload()"
+                class="ui right labeled icon button"
+              >
+                <i class="retweet icon"></i>
+                Reload
+              </button>
             </div>
-          </h2>
-          <div class="ui category search">
-            <div class="ui icon input">
-              <input
-                v-model="filter"
-                class="prompt"
-                type="text"
-                placeholder="Filter articles..."
-              />
-              <i class="search icon"></i>
+            <div class="item">
+              <div class="ui category search">
+                <div class="ui icon input">
+                  <input
+                    v-model="filter"
+                    class="prompt"
+                    type="text"
+                    placeholder="Filter articles..."
+                  />
+                  <i class="search icon"></i>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <div class="row"></div>
         <br />
-        <div class="ui link cards">
+        <div v-if="news.articles" class="ui link cards">
           <div
-            style="width: 30vw"
+            style="width: 32%"
             class="card"
             v-for="(article, $index) in news.articles.filter(x => x.title.toLowerCase().includes(filter))"
             v-on:click="goToSingleView($index)"

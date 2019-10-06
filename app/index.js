@@ -13,6 +13,7 @@ function createWindow() {
         }
     });
 
+    win.setMenu(null);
     win.loadFile('./app/components/home.html')
 }
 
