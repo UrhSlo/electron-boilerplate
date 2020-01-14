@@ -7,7 +7,7 @@ require('electron-debug')({
 function createWindow() {
     var win = new BrowserWindow({
         width: 400,
-        height: 470,
+        height: 500,
         resizable: false,
         icon: './app/icon.png',
         webPreferences: {
