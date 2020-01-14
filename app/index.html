@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <title>Kalkulator</title>
+</head>
+
+<body>
+        <style>
+            body {
+                overflow: hidden;
+            }
+
+            button {
+                width: 23%;
+                height: 14%;
+                font-size: 25px !important;
+                margin: 2px !important;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                align-items: center;
+                transition: all 0.4s !important;
+            }
+
+            .btn {
+                background-color: rgb(245, 153, 15) !important;
+            }
+
+            .btn:hover {
+                background-color: rgba(245, 153, 15, 0.644) !important;
+            }
+
+            .equals {
+                width: 98%;
+                background-color: rgb(201, 201, 201) !important;
+            }
+
+            .equals:hover {
+                background-color: rgb(131, 131, 131) !important;
+
+            }
+
+            .eq{
+                height: 40px;
+                width: 98%;
+                margin: 3px 0px 3px 0px !important;
+                font-size: 25px;
+                background-color: rgb(187, 187, 187);
+                border-radius: 1px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+        <div id="root">
+        <div class="eq">
+            {{ equation }}
+        </div>
+
+
+        <button v-on:click="addCharacter('8')" class="circular ui icon button">8</button>
+        <button v-on:click="addCharacter('7')" class="circular ui icon button">7</button>
+        <button v-on:click="addCharacter('9')" class="circular ui icon button">9</button>
+        <button v-on:click="addCharacter('+')" class="circular ui icon button btn">+</button>
+        <button v-on:click="addCharacter('4')" class="circular ui icon button">4</button>
+        <button v-on:click="addCharacter('5')" class="circular ui icon button">5</button>
+        <button v-on:click="addCharacter('6')" class="circular ui icon button">6</button>
+        <button v-on:click="addCharacter('-')" class="btn circular ui icon button">-</button>
+        <button v-on:click="addCharacter('1')" class="circular ui icon button">1</button>
+        <button v-on:click="addCharacter('2')" class="circular ui icon button">2</button>
+        <button v-on:click="addCharacter('3')" class="circular ui icon button">3</button>
+        <button v-on:click="addCharacter('*')" class="btn circular ui icon button">*</button>
+        <button v-on:click="addCharacter('0')" class="circular ui icon button">0</button>
+        <button v-on:click="addCharacter('(')" class="btn circular ui icon button">(</button>
+        <button v-on:click="addCharacter(')')" class="btn circular ui icon button">)</button>
+        <button v-on:click="addCharacter('/')" class="btn circular ui icon button">/</button>
+        <button v-on:click="addCharacter('.')" class="btn circular ui icon button">.</button>
+        <button v-on:click="addCharacter('%')" class="btn circular ui icon button">%</button>
+        <button v-on:click="clearField()" class="btn circular ui icon button">C</button>
+        <button v-on:click="removeLastChar()" class="btn circular ui icon button"><i class="angle left icon"></i></button>
+        <button v-on:click="getResult()" class="equals circular ui icon button">=</button>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                new Vue({
+                    el: "#root",
+                    data: () => ({
+                        equation: ""
+                    }),
+                    methods: {
+                        addCharacter(char) {
+                            var seznam = ["%", "-", "+", "*", "/"];
+                            var zadnjiZnak = this.equation[this.equation.length-1];
+                            if (seznam.includes(char) && seznam.includes(zadnjiZnak)) {
+                                var e = this.equation;
+                                this.equation = e.substr(0,e.length-1) + char;
+                                //this.equation[this.equation.length-1] = char;
+                            } else {
+                                this.equation = this.equation + char;
+                            }
+                        },
+                        clearField() {
+                            this.equation = "";
+                        },
+                        removeLastChar() {
+                            this.equation = this.equation.slice(0, -1);
+                        },
+                        getResult() {
+                            this.equation = eval(this.equation);
+                        }
+                    }
+                })
+            });
+        </script>
+    </div>
+</body>
+
+</html>
